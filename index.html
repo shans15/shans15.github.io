@@ -1,0 +1,521 @@
+<!--
+  ============================================================================
+  THE HANS PARADIGM™ — A Signal → Rank → Explain Interface
+  ----------------------------------------------------------------------------
+  © 2026 Sarthak Hans. All rights reserved.
+
+  This file embodies an original interface paradigm authored by Sarthak Hans:
+  a three-stage Signal → Rank → Explain layout language derived from the
+  computational pattern present across the author's body of engineering and
+  research work. The visual treatment, interaction model, methodology naming,
+  and the integrated rank-with-explainability table are original authored
+  components of "The Hans Paradigm" (the "Paradigm").
+
+  Code is released under the MIT License (see LICENSE).
+  Design language and methodology naming: all rights reserved.
+  Trademark notice: "The Hans Paradigm" is a service mark of Sarthak Hans.
+  ============================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Sarthak Hans · Signal → Rank → Explain · The Hans Paradigm</title>
+  <meta name="description" content="AI/ML engineer and researcher. Builds Signal → Rank → Explain systems in healthcare, fintech, and ops. MS CS @ FAU. 1st place FAU All of Us Hackathon 2026.">
+  <meta name="author" content="Sarthak Hans">
+  <meta property="og:title" content="Sarthak Hans · The Hans Paradigm">
+  <meta property="og:description" content="Signal → Rank → Explain. An interface that enacts the methodology.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- =========================================================================
+     STATUS BAR — system metadata, visible at all times
+     ========================================================================= -->
+<div class="status-bar" role="status" aria-label="System status">
+  <div class="status-inner">
+    <div class="status-left">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="status-token">SCAN_ID</span>
+      <span class="status-value" id="scan-id">···</span>
+      <span class="status-sep">|</span>
+      <span class="status-token">OPERATOR</span>
+      <span class="status-value">shans15</span>
+      <span class="status-sep">|</span>
+      <span class="status-token">PARADIGM</span>
+      <span class="status-value">hans.v1.0</span>
+    </div>
+    <div class="status-right">
+      <span class="status-token">UTC</span>
+      <span class="status-value" id="clock">--:--:--</span>
+      <span class="status-sep">|</span>
+      <span class="status-token">LAST_INDEX</span>
+      <span class="status-value">2026-06-19</span>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     NAV — minimal, sticky, register-locked to mono
+     Desktop: inline links. Mobile: hamburger → slide-in drawer.
+     ========================================================================= -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-name">Sarthak Hans</span>
+      <span class="brand-glyph">→</span>
+    </a>
+    <div class="nav-links nav-links-desktop">
+      <a href="#work">work</a>
+      <a href="#research">research</a>
+      <a href="#method">method</a>
+      <a href="#contact">contact</a>
+      <a href="cv.pdf" class="nav-cv">cv.pdf ↗</a>
+    </div>
+    <button
+      class="nav-toggle"
+      id="nav-toggle"
+      aria-label="Open navigation menu"
+      aria-controls="nav-drawer"
+      aria-expanded="false"
+      onclick="HansParadigm.toggleDrawer()">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-label">menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer + backdrop (only visible/animated on mobile breakpoints) -->
+<div class="nav-backdrop" id="nav-backdrop" onclick="HansParadigm.closeDrawer()" aria-hidden="true"></div>
+<aside class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="nav-drawer-head">
+    <div class="nav-drawer-label">// menu</div>
+    <button class="nav-drawer-close" aria-label="Close menu" onclick="HansParadigm.closeDrawer()">close ✕</button>
+  </div>
+  <ul class="nav-drawer-list">
+    <li><a href="#work"     onclick="HansParadigm.closeDrawer()"><span class="ndl-num">01</span><span>work</span></a></li>
+    <li><a href="#research" onclick="HansParadigm.closeDrawer()"><span class="ndl-num">02</span><span>research</span></a></li>
+    <li><a href="#method"   onclick="HansParadigm.closeDrawer()"><span class="ndl-num">03</span><span>method</span></a></li>
+    <li><a href="#contact"  onclick="HansParadigm.closeDrawer()"><span class="ndl-num">04</span><span>contact</span></a></li>
+    <li><a href="cv.pdf"    onclick="HansParadigm.closeDrawer()"><span class="ndl-num">05</span><span>cv.pdf ↗</span></a></li>
+  </ul>
+  <div class="nav-drawer-foot">
+    <div>operator <em>shans15</em></div>
+    <div>paradigm <em>hans.v1.0</em></div>
+  </div>
+</aside>
+
+<main id="top">
+
+  <!-- =======================================================================
+       HERO — Stage 01 / Signal
+       Asymmetric: identity block left, thesis + filter controls right
+       ======================================================================= -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-id">
+        <div class="stage-label"><span class="stage-num">01</span><span class="stage-name">Signal</span></div>
+        <h1 class="hero-h1">
+          <span class="hero-name">Sarthak<br>Hans<span class="hero-period">.</span></span>
+          <span class="hero-role">ai/ml engineer · solutions consultant · researcher</span>
+        </h1>
+        <div class="hero-credentials">
+          <span class="cred">MS CS · FAU</span>
+          <span class="cred cred-award">★ 1st place · FAU All of Us '26</span>
+          <span class="cred">ex-Orangetheory Fitness</span>
+        </div>
+      </div>
+
+      <aside class="hero-thesis">
+        <div class="thesis-label">// thesis</div>
+        <p class="thesis-text">I build systems that narrow a noisy input space into a small, ranked, explainable list of actions. Every project below follows the same three-stage pattern. <span class="thesis-em">Signal → Rank → Explain</span>. The interface you're reading is itself an instance of it.</p>
+        <div class="thesis-meta">
+          <span>methodology </span><span class="thesis-meta-em">hans.v1.0</span>
+          <span> · authored </span><span class="thesis-meta-em">2026-06-19</span>
+        </div>
+      </aside>
+    </div>
+
+    <div class="scanline" aria-hidden="true"><div class="scanline-pulse"></div></div>
+
+    <div class="filter-bar" role="toolbar" aria-label="Filter projects">
+      <span class="filter-label">filter:</span>
+      <button class="filter-btn active" data-filter="all">all <span class="filter-count">[6]</span></button>
+      <button class="filter-btn" data-filter="ml">ml <span class="filter-count">[3]</span></button>
+      <button class="filter-btn" data-filter="quant">quant <span class="filter-count">[1]</span></button>
+      <button class="filter-btn" data-filter="agents">agents <span class="filter-count">[1]</span></button>
+      <button class="filter-btn" data-filter="data">data-eng <span class="filter-count">[1]</span></button>
+      <button class="filter-btn" data-filter="research">research <span class="filter-count">[1]</span></button>
+      <span class="filter-spacer"></span>
+      <span class="filter-sort">sort: <span class="filter-sort-val">rank ↓</span></span>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       RANK — Stage 02 / Rank
+       Dense scan-output table with inline Explain panels
+       ======================================================================= -->
+  <section class="rank" id="work">
+    <div class="stage-label stage-label-section"><span class="stage-num">02</span><span class="stage-name">Rank</span></div>
+
+    <div class="rank-head" role="row">
+      <div class="rh-col rh-num">#</div>
+      <div class="rh-col rh-name">project</div>
+      <div class="rh-col rh-signals">signals</div>
+    </div>
+
+    <article class="rank-row" data-cats="ml">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">01</div>
+        <div class="rr-name">
+          <h3>MedGap <span class="rr-sub">psychiatric medication-gap monitor</span></h3>
+          <div class="rr-tags"><span>healthcare</span><span class="dot">·</span><span>xgboost</span><span class="dot">·</span><span>react</span><span class="dot">·</span><span>shap</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge badge-award">★ 1st · FAU '26</span>
+          <span class="badge">740K rows</span>
+          <span class="badge">AUC 0.87</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #1</div>
+            <p class="explain-text">A textbook <em>Signal → Rank → Explain</em> system, applied to clinical decision-support. Two XGBoost models trained on ~740K medication eras from the NIH All of Us Researcher Workbench surface per-patient discontinuation risk (AUC <em>0.8713</em>, PR-AUC <em>4.3× baseline</em>) and 180-day behavioral-health crisis risk (AUC <em>0.745</em>, PR-AUC <em>3.7× baseline</em>). The React dashboard renders SHAP explanations and equity breakdowns inline so clinicians can <em>act, not just look</em>.</p>
+            <div class="explain-links">
+              <a href="https://github.com/shans15/medgap">repo →</a>
+              <a href="#">case study →</a>
+              <a href="#">slides →</a>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>award</dt><dd>1st · FAU All of Us '26</dd></div>
+              <div class="feat"><dt>data</dt><dd>~740,000 medication eras</dd></div>
+              <div class="feat"><dt>auc-roc</dt><dd>0.8713 (disc.) · 0.745 (crisis)</dd></div>
+              <div class="feat"><dt>pr-auc lift</dt><dd>4.3× · 3.7× baseline</dd></div>
+              <div class="feat"><dt>explainability</dt><dd>SHAP + equity breakdowns</dd></div>
+              <div class="feat"><dt>shipped</dt><dd>React dashboard, FastAPI</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rank-row" data-cats="quant">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">02</div>
+        <div class="rr-name">
+          <h3>Options Scanner <span class="rr-sub">directional setups → ranked contracts</span></h3>
+          <div class="rr-tags"><span>quant</span><span class="dot">·</span><span>python</span><span class="dot">·</span><span>garch</span><span class="dot">·</span><span>monte-carlo</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge">500 tickers</span>
+          <span class="badge">EV-aware</span>
+          <span class="badge">EOD</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #2</div>
+            <p class="explain-text">The clearest statement of the methodology, in my own words from the repo: <em>"Most option scanners are noisy because they evaluate every contract on every ticker, then try to sort the firehose. This one inverts the problem."</em> A ticker only enters the scan if a Saty-style technical setup fires on its daily chart (Signal). Surviving tickers get stress-tested P(profit), EV, and composite scoring across their option chains (Rank). Output is a labeled list (<code>TRADE / WATCHLIST / NO_TRADE</code>) backed by the setup that put it there (Explain).</p>
+            <div class="explain-links">
+              <a href="https://github.com/shans15/options-scanner">repo →</a>
+              <a href="#">methodology →</a>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>universe</dt><dd>S&amp;P 500, cached daily</dd></div>
+              <div class="feat"><dt>setup detectors</dt><dd>compression · pullback · stage-2 · failed-breakdown</dd></div>
+              <div class="feat"><dt>pricing</dt><dd>GARCH-conditioned · Monte Carlo</dd></div>
+              <div class="feat"><dt>scoring</dt><dd>P(profit) · expected value · stress</dd></div>
+              <div class="feat"><dt>output</dt><dd>3-class labeled candidate list</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rank-row" data-cats="agents ml">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">03</div>
+        <div class="rr-name">
+          <h3>Incident Intelligence Agent <span class="rr-sub">alert → drafted RCA in &lt;10s</span></h3>
+          <div class="rr-tags"><span>agents</span><span class="dot">·</span><span>claude</span><span class="dot">·</span><span>chromadb</span><span class="dot">·</span><span>rag</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge badge-prod">OTF-derived</span>
+          <span class="badge">&lt; 10s e2e</span>
+          <span class="badge">vector KB</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #3</div>
+            <p class="explain-text">Open-source rebuild of a production system shipped at Orangetheory Fitness. Raw PagerDuty alert (Signal) → similarity search against a local ChromaDB of past incidents (Rank) → drafted RCA with cited precedents, formatted for paste into Jira or Slack (Explain). The OTF lineage matters: this is a vendor-neutral version of something that ran in production for an enterprise on-call team, not a side project.</p>
+            <div class="explain-links">
+              <a href="https://github.com/shans15/incident-intelligence-agent">repo →</a>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>latency</dt><dd>&lt; 10s end-to-end</dd></div>
+              <div class="feat"><dt>retrieval</dt><dd>ChromaDB, local-first</dd></div>
+              <div class="feat"><dt>generation</dt><dd>Claude API + retry/backoff</dd></div>
+              <div class="feat"><dt>output</dt><dd>markdown RCA, paste-ready</dd></div>
+              <div class="feat"><dt>lineage</dt><dd>Orangetheory Fitness prod</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rank-row" data-cats="data ml">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">04</div>
+        <div class="rr-name">
+          <h3>Bike Data Lakehouse <span class="rr-sub">medallion as Signal → Rank → Explain</span></h3>
+          <div class="rr-tags"><span>data-eng</span><span class="dot">·</span><span>databricks</span><span class="dot">·</span><span>delta</span><span class="dot">·</span><span>mlflow</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge">70M rows</span>
+          <span class="badge">Unity Catalog</span>
+          <span class="badge">MLflow registry</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #4</div>
+            <p class="explain-text">The methodology applied at the data-engineering layer. <em>Bronze (Signal)</em> ingests raw Citi Bike trips + GBFS + weather with MERGE-based idempotency and bad-row quarantine. <em>Silver (Rank)</em> is the cleaned, partitioned, Z-ordered hourly demand tables. <em>Gold (Explain)</em> is the predicted-demand model output an operations dashboard can actually act on. The Lakehouse architecture is the point, not the dataset.</p>
+            <div class="explain-links">
+              <a href="https://github.com/shans15/bike-data-lakehouse">repo →</a>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>volume</dt><dd>~70M trip rows · 3.5 GB</dd></div>
+              <div class="feat"><dt>governance</dt><dd>Unity Catalog, single plane</dd></div>
+              <div class="feat"><dt>experiments</dt><dd>MLflow · baseline + LGBM + GBT</dd></div>
+              <div class="feat"><dt>output</dt><dd>SQL ops dashboard</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rank-row" data-cats="research ml">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">05</div>
+        <div class="rr-name">
+          <h3>CFPB LLM Fairness <span class="rr-sub">zero-shot vs. few-shot under domain shift</span></h3>
+          <div class="rr-tags"><span>research</span><span class="dot">·</span><span>llm</span><span class="dot">·</span><span>fairness</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge">working paper</span>
+          <span class="badge">CAP6635</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #5</div>
+            <p class="explain-text">The methodology as research. Compares Multinomial Naive Bayes against zero-shot and few-shot LLM classification for financial-distress detection across CFPB credit-card → mortgage complaints (Signal: classifiers · Rank: out-of-domain accuracy · Explain: fairness analysis across demographic groups). 10-year window, 2016–2026. In preparation as a working paper for CAP6635.</p>
+            <div class="explain-links">
+              <a href="https://github.com/shans15/cap6635-research">repo →</a>
+              <a href="#research">read alongside research section ↓</a>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>source domain</dt><dd>credit card complaints</dd></div>
+              <div class="feat"><dt>target domain</dt><dd>mortgage complaints</dd></div>
+              <div class="feat"><dt>baseline</dt><dd>Multinomial Naive Bayes</dd></div>
+              <div class="feat"><dt>labels</dt><dd>derived from response category</dd></div>
+              <div class="feat"><dt>window</dt><dd>2016-04-30 → 2026-04-30</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rank-row" data-cats="agents ml">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">06</div>
+        <div class="rr-name">
+          <h3>Veil <span class="rr-sub">image-authenticity scoring &amp; scam triage</span></h3>
+          <div class="rr-tags"><span>ml</span><span class="dot">·</span><span>vision</span><span class="dot">·</span><span>detector-ensemble</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge">3-tier verdict</span>
+          <span class="badge">local-first</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #6</div>
+            <p class="explain-text">Same pattern, image domain. Detector outputs (Signal) → combined Veil authenticity score with confidence rating (Rank) → plain-language verdict (<code>Looks authentic</code> / <code>Needs review</code> / <code>High scam risk</code>) plus visual warning-sign explanations and verification next-steps (Explain). Designed for human review, not as definitive proof.</p>
+            <div class="explain-links">
+              <a href="https://github.com/shans15/ai-detector">repo →</a>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>scoring</dt><dd>ensemble → normalized Veil score</dd></div>
+              <div class="feat"><dt>verdicts</dt><dd>3 plain-language classes</dd></div>
+              <div class="feat"><dt>privacy</dt><dd>local API support</dd></div>
+              <div class="feat"><dt>use cases</dt><dd>scam · dating · news verification</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="rank-foot">
+      <span class="rank-foot-token">// </span>
+      <span id="rank-count">6 of 6 projects</span>
+      <span class="rank-foot-token"> · filtered by </span>
+      <span id="rank-filter">all</span>
+      <span class="rank-foot-token"> · sorted by </span>
+      <span>rank desc</span>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       METHOD — Stage 03 / Explain (inverted register: dark)
+       The named methodology, articulated as three explicit stages
+       ======================================================================= -->
+  <section class="method" id="method">
+    <div class="method-inner">
+      <div class="stage-label stage-label-on-dark"><span class="stage-num">03</span><span class="stage-name">Explain</span></div>
+      <h2 class="method-h2">Why the work all looks the same.<br><span class="method-em">Signal → Rank → Explain.</span></h2>
+      <p class="method-lead">The thread across MedGap, the Options Scanner, the Incident Agent, the Lakehouse, the CFPB research, and Veil is a single methodology. Take a noisy input space. Filter to what deserves attention. Score what survives. Surface the reasoning so a human can <em>act</em>, not just look.</p>
+
+      <div class="method-stages">
+        <article class="method-stage">
+          <div class="ms-num">01 · Signal</div>
+          <h3>Filter the firehose.</h3>
+          <p>Most systems evaluate everything and try to sort the noise. The Hans Paradigm inverts: narrow the input first, with cheap deterministic detectors, before any expensive evaluation runs. Universe enters; few-hundred candidates exit.</p>
+        </article>
+        <article class="method-stage">
+          <div class="ms-num">02 · Rank</div>
+          <h3>Score what survives.</h3>
+          <p>The ranker is permitted to be expensive because the upstream filter has paid down volume. Score by what maps to action: P(profit), AUC, similarity, expected value. Never by what's easy to measure.</p>
+        </article>
+        <article class="method-stage">
+          <div class="ms-num">03 · Explain</div>
+          <h3>Hand the human a decision.</h3>
+          <p>The output is not a prediction. It is a decision-ready artifact: a labeled action, a drafted RCA, a SHAP-explained risk band, a fairness breakdown. The system shows its work in the register the operator needs.</p>
+        </article>
+      </div>
+
+      <div class="method-foot">
+        <span>methodology: <em>The Hans Paradigm</em> · v1.0</span>
+        <span class="method-sep">|</span>
+        <span>service mark: <em>Sarthak Hans</em></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       RESEARCH — academic register, narrower column
+       ======================================================================= -->
+  <section class="research" id="research">
+    <div class="research-inner">
+      <div class="stage-label stage-label-section"><span class="stage-num">/research</span></div>
+      <h2 class="research-h2">Working papers &amp; <em>applied research</em>.</h2>
+      <p class="research-lead">LLM evaluation under domain shift, fairness in applied ML, clinician-facing models in high-stakes domains.</p>
+
+      <article class="pub">
+        <div class="pub-type">Working paper · 2026</div>
+        <h3 class="pub-title"><a href="#">Few-Shot vs. Zero-Shot LLM Classification for Financial Distress under Cross-Product Domain Shift: A Fairness Analysis Using CFPB Consumer Complaints</a></h3>
+        <div class="pub-authors">Sarthak Hans</div>
+        <div class="pub-venue">CAP6635, Florida Atlantic University · in preparation</div>
+        <p class="pub-abstract">Compares Multinomial Naive Bayes against zero-shot and few-shot LLM classification for financial-distress detection across CFPB credit-card → mortgage complaints. Adds a fairness analysis across demographic groups to surface where domain shift compounds bias. Default window: 2016-04-30 → 2026-04-30.</p>
+        <div class="pub-links"><a href="#">pdf →</a><a href="https://github.com/shans15/cap6635-research">code →</a></div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-type">Applied research · 2026</div>
+        <h3 class="pub-title"><a href="#">Predicting Psychiatric Medication Discontinuation: An XGBoost Model on 740K All of Us Records with SHAP-Based Clinician Explanations</a></h3>
+        <div class="pub-authors">Sarthak Hans</div>
+        <div class="pub-venue">FAU All of Us Hackathon 2026 · <em>1st place</em></div>
+        <p class="pub-abstract">Two XGBoost models trained on ~740,000 medication eras predict 45-day discontinuation (AUC 0.8713, PR-AUC 4.3× baseline) and 180-day behavioral-health crisis risk (AUC 0.745, PR-AUC 3.7× baseline). Discusses calibration tradeoffs, equity breakdowns across demographics, and clinician-trust design choices.</p>
+        <div class="pub-links"><a href="#">writeup →</a><a href="https://github.com/shans15/medgap">code →</a></div>
+      </article>
+
+      <div class="research-interests">
+        <span class="ri-label">interests</span>
+        <span>LLM evaluation under domain shift · fairness in applied ML · clinician-facing ML systems · applied research that ships to production.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       CONTACT — system-prompt styled
+       ======================================================================= -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="stage-label"><span class="stage-num">/contact</span></div>
+      <h2 class="contact-h2">Open to engagements.</h2>
+      <p class="contact-lead">Currently taking selective AI/ML engineering &amp; solutions-consulting work. Also happy to discuss research collaborations and full-time roles.</p>
+      <div class="contact-grid">
+        <a class="contact-link" href="mailto:sarthakhans15@gmail.com">
+          <span class="cl-label">email</span>
+          <span class="cl-val">sarthakhans15@gmail.com →</span>
+        </a>
+        <a class="contact-link" href="https://github.com/shans15">
+          <span class="cl-label">github</span>
+          <span class="cl-val">github.com/shans15 →</span>
+        </a>
+        <a class="contact-link" href="#">
+          <span class="cl-label">linkedin</span>
+          <span class="cl-val">linkedin.com/in/sarthakhans →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================================================
+     FOOTER — system status block
+     ========================================================================= -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-block">
+      <span class="footer-token">$</span>
+      <span class="footer-val">git log --oneline -1</span>
+    </div>
+    <div class="footer-block">
+      <span class="footer-token">↳</span>
+      <span class="footer-val" id="footer-commit">hans/v1.0 · 2026-06-19 · initial public scan</span>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-meta">
+      <div>© 2026 Sarthak Hans · <em>The Hans Paradigm™</em> is a service mark.</div>
+      <div>Code: MIT. Design language and methodology naming: all rights reserved.</div>
+      <div>Built without templates. Single static artifact, no build step, no tracking.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
