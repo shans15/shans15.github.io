@@ -115,6 +115,18 @@ footer                      (system-status block + IP notice)
 - Removed the "verdict" column (`▸ TRADE` / `▹ WATCH`) for the same reason — a metaphor flourish borrowed from the Options Scanner's vocabulary, not load-bearing on this page. Grid recalculated 5 → 4 → 3 columns.
 - Em-dash usage reduced across body copy and meta tags. Project-row subtitle separator moved from `—` to a typographic register shift (mono + muted, on its own line). Section-banner code comments in the HTML source still use `—` since they never render to users.
 
+### v1.0.3 revision (2026-06-19) — sub-pages + OTF correction + email update
+
+- **OTF reference corrected.** Sarthak is currently employed at Orangetheory Fitness, not "ex-". Hero credential, IIA badge text, and the IIA Explain paragraph all rewritten to present-tense ("informed by the production work I do at Orangetheory Fitness", lineage "built at Orangetheory Fitness").
+- **Contact email updated** to `sarthakhans@hotmail.com` across the site.
+- **About page** added at `/about/` — bio, current work, recent timeline, working philosophy, stack list, and contact CTA. Linked from desktop nav and mobile drawer.
+- **Case studies** added for the three highest-credibility projects:
+  - `/work/medgap/` — full case study with problem / constraints / approach / results table (AUCs, PR-AUC lifts) / "what I'd change" / stack
+  - `/work/options-scanner/` — articulates the methodology in its own words, emphasizing the inverted-pipeline design
+  - `/work/incident-agent/` — emphasizes the OTF lineage and what production deployment taught the open-source rebuild
+- **404 page** at `/404.html` — fits the system aesthetic ("Scan returned no match"), provides home/work/research/about links to recover.
+- **Style additions** to support article pages: `.article`, `.article-head`, `.article-h1`, `.article-section`, `.results-table`, `.stack-list`, `.timeline`, `.error-*` — and a `.callout` left-bar treatment for inline emphasis. All responsive to the existing ≤700px / ≤480px breakpoints.
+
 ### v1.0.2 revision (2026-06-19) — cross-platform responsiveness
 
 Three new breakpoints, plus tablet/ultrawide handling and full mobile reflow that preserves all content rather than hiding it.

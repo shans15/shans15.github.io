@@ -1,0 +1,211 @@
+<!--
+  ============================================================================
+  About · Sarthak Hans
+  © 2026 Sarthak Hans. The Hans Paradigm™.
+  ============================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>About · Sarthak Hans</title>
+  <meta name="description" content="AI/ML engineer and researcher. Builds Signal → Rank → Explain systems. MS CS @ FAU. Currently at Orangetheory Fitness.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="status-bar" role="status" aria-label="System status">
+  <div class="status-inner">
+    <div class="status-left">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="status-token">PAGE</span>
+      <span class="status-value">/about</span>
+      <span class="status-sep">|</span>
+      <span class="status-token">OPERATOR</span>
+      <span class="status-value">shans15</span>
+    </div>
+    <div class="status-right">
+      <span class="status-token">UTC</span>
+      <span class="status-value" id="clock">--:--:--</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <span class="brand-name">Sarthak Hans</span>
+      <span class="brand-glyph">→</span>
+    </a>
+    <div class="nav-links nav-links-desktop">
+      <a href="/#work">work</a>
+      <a href="/#research">research</a>
+      <a href="/#method">method</a>
+      <a href="/about/" class="nav-cv">about</a>
+      <a href="/#contact">contact</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="nav-drawer" aria-expanded="false" onclick="HansParadigm.toggleDrawer()">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-label">menu</span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-backdrop" id="nav-backdrop" onclick="HansParadigm.closeDrawer()" aria-hidden="true"></div>
+<aside class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="nav-drawer-head">
+    <div class="nav-drawer-label">// menu</div>
+    <button class="nav-drawer-close" aria-label="Close menu" onclick="HansParadigm.closeDrawer()">close ✕</button>
+  </div>
+  <ul class="nav-drawer-list">
+    <li><a href="/#work"     onclick="HansParadigm.closeDrawer()"><span class="ndl-num">01</span><span>work</span></a></li>
+    <li><a href="/#research" onclick="HansParadigm.closeDrawer()"><span class="ndl-num">02</span><span>research</span></a></li>
+    <li><a href="/#method"   onclick="HansParadigm.closeDrawer()"><span class="ndl-num">03</span><span>method</span></a></li>
+    <li><a href="/about/"    onclick="HansParadigm.closeDrawer()"><span class="ndl-num">04</span><span>about</span></a></li>
+    <li><a href="/#contact"  onclick="HansParadigm.closeDrawer()"><span class="ndl-num">05</span><span>contact</span></a></li>
+  </ul>
+  <div class="nav-drawer-foot">
+    <div>operator <em>shans15</em></div>
+    <div>paradigm <em>hans.v1.0</em></div>
+  </div>
+</aside>
+
+<main class="article">
+  <div class="breadcrumb">
+    <a href="/">home</a>
+    <span class="crumb-sep">/</span>
+    <span>about</span>
+  </div>
+
+  <header class="article-head">
+    <div class="article-eyebrow">/about</div>
+    <h1 class="article-h1">I build systems that hand a human a decision.</h1>
+    <p class="article-sub">Engineer first, researcher second. Healthcare, fintech, and operations are where the methodology lives — wherever the cost of a noisy decision is high enough that you have to filter, score, and explain.</p>
+    <div class="article-meta">
+      <span class="am-item"><span class="am-k">based</span><span>Boca Raton, FL</span></span>
+      <span class="am-item"><span class="am-k">study</span><span>MS CS, FAU</span></span>
+      <span class="am-item"><span class="am-k">role</span><span>Orangetheory Fitness</span></span>
+      <span class="am-item award">★ 1st place · FAU All of Us '26</span>
+    </div>
+  </header>
+
+  <section class="article-section">
+    <h2>What I do</h2>
+    <p>I'm an applied ML engineer with a research lean. I ship production systems where the model is one part of a longer pipeline — somebody operates the output, somebody downstream has to act on it. The interesting work is almost never the model itself; it's how the noisy input becomes a small, scored, defensible recommendation that a clinician, on-call engineer, or trader can move on inside a few seconds.</p>
+    <p>That shape of work has its own name on this site: <em>Signal → Rank → Explain</em>. The <a href="/#method">methodology page</a> spells out what the three stages mean and why every project in <a href="/#work">selected work</a> takes the same shape, even when the domain (psychiatric medications, options pricing, incident triage, lakehouse demand) couldn't look more different.</p>
+  </section>
+
+  <section class="article-section">
+    <h2>Currently</h2>
+    <ul>
+      <li><b>Orangetheory Fitness</b> — engineering on production incident and operations tooling. The work that informs the open-source <a href="https://github.com/shans15/incident-intelligence-agent">Incident Intelligence Agent</a>.</li>
+      <li><b>FAU · MS CS</b> — coursework and applied-research projects, including the CAP6635 working paper on LLM fairness under cross-product domain shift.</li>
+      <li><b>Open to engagements</b> — selective AI/ML engineering and solutions-consulting work outside of full-time. Three- to six-week scoped projects preferred.</li>
+    </ul>
+  </section>
+
+  <section class="article-section">
+    <h2>Recently</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-when">2026 · APR</div>
+        <div class="timeline-what">
+          <h4>1st place · FAU All of Us Hackathon 2026</h4>
+          <div class="where">MedGap · psychiatric medication-gap monitor</div>
+          <p>Two XGBoost models on 740K All of Us records, AUC 0.87 / 0.75, SHAP explanations and equity breakdowns delivered through a React clinician dashboard. <a href="/work/medgap/">Case study →</a></p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-when">2026 · ongoing</div>
+        <div class="timeline-what">
+          <h4>CFPB LLM Fairness</h4>
+          <div class="where">CAP6635 · working paper</div>
+          <p>Zero-shot vs. few-shot LLM classification under credit-card → mortgage domain shift, with a fairness analysis across demographic groups. Currently in preparation.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-when">2026 · ongoing</div>
+        <div class="timeline-what">
+          <h4>Options Scanner</h4>
+          <div class="where">Personal · quant</div>
+          <p>End-of-day options scanner that finds directional setups first, then ranks long-premium contracts with EV-aware composite scoring. The clearest articulation of the Signal → Rank → Explain pattern in my own code.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-when">2025 · 2026</div>
+        <div class="timeline-what">
+          <h4>Incident Intelligence Agent</h4>
+          <div class="where">Open-source · derived from production work at Orangetheory Fitness</div>
+          <p>Triages alerts and drafts root-cause analyses in under 10 seconds. Claude API + ChromaDB local vector knowledge base. The OTF version handles enterprise on-call traffic; the OSS version is the vendor-neutral expression.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-when">2025</div>
+        <div class="timeline-what">
+          <h4>Bike Data Lakehouse</h4>
+          <div class="where">Personal · data engineering</div>
+          <p>End-to-end Databricks medallion build: Bronze/Silver/Gold on Delta, Unity Catalog governance, MLflow registry, batch inference job and SQL ops dashboard. The Lakehouse architecture is the point, not the dataset.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-when">2023</div>
+        <div class="timeline-what">
+          <h4>Senior Design · Wallcopter</h4>
+          <div class="where">Florida Atlantic University · BS CS capstone</div>
+          <p>Team capstone project culminating an undergraduate degree in Computer Science.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-section">
+    <h2>How I work</h2>
+    <p><b>Inverted pipelines, not firehoses.</b> Most systems evaluate everything and try to sort the noise afterward. The work I'm proud of inverts that — cheap deterministic filters first, expensive evaluation only on what survives, decision-ready output at the end.</p>
+    <p><b>Scores that map to action.</b> AUC, P(profit), expected value, similarity rank — pick the metric that the operator on the other end of the pipeline can act on. Skip the ones that are easy to measure but don't move a decision.</p>
+    <p><b>Explainability is part of the product.</b> SHAP per-patient for clinicians. The setup name that put a ticker on the list, for traders. Cited prior incidents in an RCA draft, for on-call. The output isn't a number — it's a defensible recommendation.</p>
+    <p><b>Ship the artifact, not the framework.</b> The deliverable is the thing somebody actually uses. The framework around it lives in the README, not in a fifteen-page architecture document.</p>
+  </section>
+
+  <section class="article-section">
+    <h2>Stack I reach for</h2>
+    <div class="stack-list">
+      <span>Python</span><span>PyTorch</span><span>XGBoost</span><span>Claude API</span><span>ChromaDB / RAG</span><span>SHAP</span>
+      <span>SQL</span><span>Databricks</span><span>Delta Lake</span><span>MLflow</span><span>Spark</span>
+      <span>React</span><span>TypeScript</span><span>FastAPI</span>
+      <span>R</span><span>C++</span><span>LaTeX</span>
+    </div>
+  </section>
+
+  <section class="article-section">
+    <h2>Talk to me</h2>
+    <p>The fastest way to reach me is <a href="mailto:sarthakhans@hotmail.com">sarthakhans@hotmail.com</a>. I respond inside a business day for engagement inquiries, slower on cold pitches. Code is at <a href="https://github.com/shans15">github.com/shans15</a>.</p>
+  </section>
+
+  <div class="article-foot">
+    <a href="/">← back to home</a>
+    <a href="/work/medgap/">read the MedGap case study →</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-block"><span class="footer-token">$</span><span class="footer-val">git log --oneline -1</span></div>
+    <div class="footer-block"><span class="footer-token">↳</span><span class="footer-val">hans/v1.0 · 2026-06-19 · about page</span></div>
+    <div class="footer-rule"></div>
+    <div class="footer-meta">
+      <div>© 2026 Sarthak Hans · <em>The Hans Paradigm™</em> is a service mark.</div>
+      <div>Code: MIT. Design language and methodology naming: all rights reserved.</div>
+      <div>Built without templates. Single static artifact, no build step, no tracking.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

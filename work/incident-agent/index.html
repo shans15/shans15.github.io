@@ -1,0 +1,166 @@
+<!--
+  ============================================================================
+  Case study · Incident Intelligence Agent
+  © 2026 Sarthak Hans. The Hans Paradigm™.
+  ============================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Incident Intelligence Agent — case study · Sarthak Hans</title>
+  <meta name="description" content="Open-source incident-triage agent. Alert → drafted RCA in under 10 seconds, via Claude + ChromaDB local vector knowledge base. Informed by the production work I do at Orangetheory Fitness.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="status-bar" role="status">
+  <div class="status-inner">
+    <div class="status-left">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="status-token">PAGE</span><span class="status-value">/work/incident-agent</span>
+      <span class="status-sep">|</span>
+      <span class="status-token">CASE_STUDY</span><span class="status-value">03 of 06</span>
+    </div>
+    <div class="status-right">
+      <span class="status-token">UTC</span><span class="status-value" id="clock">--:--:--</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/"><span class="brand-name">Sarthak Hans</span><span class="brand-glyph">→</span></a>
+    <div class="nav-links nav-links-desktop">
+      <a href="/#work">work</a><a href="/#research">research</a><a href="/#method">method</a><a href="/about/">about</a><a href="/#contact">contact</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="nav-drawer" aria-expanded="false" onclick="HansParadigm.toggleDrawer()">
+      <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-label">menu</span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-backdrop" id="nav-backdrop" onclick="HansParadigm.closeDrawer()" aria-hidden="true"></div>
+<aside class="nav-drawer" id="nav-drawer" aria-hidden="true">
+  <div class="nav-drawer-head">
+    <div class="nav-drawer-label">// menu</div>
+    <button class="nav-drawer-close" onclick="HansParadigm.closeDrawer()">close ✕</button>
+  </div>
+  <ul class="nav-drawer-list">
+    <li><a href="/#work"     onclick="HansParadigm.closeDrawer()"><span class="ndl-num">01</span><span>work</span></a></li>
+    <li><a href="/#research" onclick="HansParadigm.closeDrawer()"><span class="ndl-num">02</span><span>research</span></a></li>
+    <li><a href="/#method"   onclick="HansParadigm.closeDrawer()"><span class="ndl-num">03</span><span>method</span></a></li>
+    <li><a href="/about/"    onclick="HansParadigm.closeDrawer()"><span class="ndl-num">04</span><span>about</span></a></li>
+    <li><a href="/#contact"  onclick="HansParadigm.closeDrawer()"><span class="ndl-num">05</span><span>contact</span></a></li>
+  </ul>
+  <div class="nav-drawer-foot">
+    <div>operator <em>shans15</em></div>
+    <div>paradigm <em>hans.v1.0</em></div>
+  </div>
+</aside>
+
+<main class="article">
+  <div class="breadcrumb">
+    <a href="/">home</a><span class="crumb-sep">/</span><a href="/#work">work</a><span class="crumb-sep">/</span><span>incident-agent</span>
+  </div>
+
+  <header class="article-head">
+    <div class="article-eyebrow">case study · ai · agents · sre</div>
+    <h1 class="article-h1">Incident Intelligence Agent — alert to drafted RCA in under ten seconds.</h1>
+    <p class="article-sub">Open-source incident-triage agent informed by the production work I do at Orangetheory Fitness. Takes a raw alert, retrieves the most similar past incidents from a local vector knowledge base, and drafts a root-cause analysis in markdown a human can paste straight into Jira or Slack.</p>
+    <div class="article-meta">
+      <span class="am-item"><span class="am-k">latency</span><span>&lt; 10 seconds end-to-end</span></span>
+      <span class="am-item"><span class="am-k">lineage</span><span>built at Orangetheory Fitness</span></span>
+      <span class="am-item"><span class="am-k">stack</span><span>Claude API · ChromaDB · Python</span></span>
+      <span class="am-item"><span class="am-k">repo</span><span><a href="https://github.com/shans15/incident-intelligence-agent">github.com/shans15/incident-intelligence-agent</a></span></span>
+    </div>
+  </header>
+
+  <section class="article-section">
+    <h2>Problem</h2>
+    <p>The first ten minutes of an incident response are spent on two things that have very little to do with actually fixing the problem: writing the RCA structure from scratch ("Summary / Impact / Timeline / Probable Cause / Mitigation / Action Items") and hunting through Slack, Confluence, and old Jira tickets for "didn't we hit something like this last quarter?"</p>
+    <p>Both are <em>retrieval problems disguised as writing problems</em>. The RCA structure is templated. The "have we seen this before" search is bounded — it's not the open web, it's your own incident history. On-call engineers waste 30–60 minutes per incident on work that a small, well-scoped system can do in seconds, freeing the human to focus on the actual remediation.</p>
+  </section>
+
+  <section class="article-section">
+    <h2>Constraints</h2>
+    <ul>
+      <li><b>Latency budget under ten seconds.</b> Anything longer and the engineer has already started writing the RCA themselves; the agent's output gets ignored.</li>
+      <li><b>Local-first retrieval.</b> The vector knowledge base is local to the deployer's environment. Past incident text is sensitive — the agent can't be a "send your incidents to a cloud vector DB" product.</li>
+      <li><b>Output must be paste-ready.</b> No "click here to view the full report" indirection. The output is markdown the engineer drops into Jira and finishes editing in seconds.</li>
+      <li><b>Vendor neutral.</b> The OTF version of this work runs against an enterprise on-call stack. The open-source version explicitly avoids vendor lock-in — Claude is the default but the interface is model-agnostic, ChromaDB is the default but the retriever is pluggable.</li>
+    </ul>
+  </section>
+
+  <section class="article-section">
+    <h2>Approach</h2>
+    <p>Same three stages, applied to alerts instead of patients or tickers.</p>
+
+    <h3>01 / Signal — normalize the inbound alert</h3>
+    <p>Alerts come in two forms: PagerDuty JSON payloads or plain text (a Slack message, a copy-pasted email). The first step is a tiny normalization layer that pulls service name, severity, error class, and timestamp into a structured form the rest of the pipeline can reason about. Bad alerts get rejected here — empty payloads, malformed JSON — before any model call.</p>
+
+    <h3>02 / Rank — retrieve similar incidents from a local vector KB</h3>
+    <p>The local ChromaDB is seeded with past incident reports, postmortems, and runbook entries. The normalized alert is embedded and a top-K similarity search returns the most relevant past incidents along with their distances. K is small — typically 3–5 — because the downstream LLM call has a token budget and the retrieved snippets need to fit inside it.</p>
+    <p>This is the part of the system that has to be local. Past incidents are the highest-value institutional knowledge an engineering team has; they don't leave the environment.</p>
+
+    <h3>03 / Explain — drafted RCA with cited precedents</h3>
+    <p>The retrieved incidents go to Claude (with retry and exponential backoff for production resilience) along with the normalized alert and a structured RCA prompt. The output is markdown with the standard RCA sections, plus an explicit "Similar past incidents" section that cites the retrieved precedents by ID and explains why each is relevant.</p>
+    <p>The "Explain" property is what separates this from a generic "summarize my alert with an LLM" wrapper. The engineer doesn't just see a draft; they see <em>why this draft</em> — which past incidents informed it, and where to go look for additional context.</p>
+  </section>
+
+  <section class="article-section">
+    <h2>The OTF lineage</h2>
+    <p>I architected a similar system in production at Orangetheory Fitness. The open-source agent in this repo is the vendor-neutral expression of that work — the same architectural shape (alert → local vector retrieve → LLM RCA draft with cited precedents), rebuilt with public components so anyone can run it.</p>
+    <p>The lineage matters because production deployment teaches things side projects don't. Retry policies. Token budget overflow handling. The need for an explicit "skip this incident" path when the alert payload is junk. The realization that the engineer trusts the draft <em>more</em> when it cites the prior incidents than when the LLM output looks too polished. All of those decisions are in the OSS version because they were learned at OTF.</p>
+  </section>
+
+  <section class="article-section">
+    <h2>What I'd change</h2>
+    <ul>
+      <li><b>Feedback loop into the KB.</b> Right now the engineer edits the draft RCA and ships it — but those edits don't flow back into the knowledge base. The next iteration captures the final-published RCA as a new KB entry, closing the loop so the system gets sharper as it's used.</li>
+      <li><b>Retrieval quality eval, not just generation quality.</b> Most LLM-tool benchmarks measure the final output. For an agent like this, the more interesting evaluation is whether the retrieval step pulls the right precedents. A small held-out set of incident pairs (known similar / known unrelated) would let me measure retrieval directly and decoupled from the LLM.</li>
+      <li><b>Per-service routing.</b> An incident on the payment service has different relevant precedents from an incident on the email-delivery service. A smarter retriever would scope the search by service or by the org's service topology, not just by raw vector similarity.</li>
+    </ul>
+  </section>
+
+  <section class="article-section">
+    <h2>Stack</h2>
+    <div class="stack-list">
+      <span>Python</span><span>Claude API</span><span>anthropic SDK</span><span>ChromaDB</span><span>pydantic</span><span>tenacity (retry)</span>
+    </div>
+  </section>
+
+  <section class="article-section">
+    <h2>References</h2>
+    <ul>
+      <li>Repo · <a href="https://github.com/shans15/incident-intelligence-agent">github.com/shans15/incident-intelligence-agent</a></li>
+      <li>Methodology · <a href="/#method">Signal → Rank → Explain</a></li>
+    </ul>
+  </section>
+
+  <div class="article-foot">
+    <a href="/">← back to home</a>
+    <a href="/work/options-scanner/">read the Options Scanner case study →</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-block"><span class="footer-token">$</span><span class="footer-val">git log --oneline -1</span></div>
+    <div class="footer-block"><span class="footer-token">↳</span><span class="footer-val">hans/v1.0 · 2026-06-19 · incident-agent case study</span></div>
+    <div class="footer-rule"></div>
+    <div class="footer-meta">
+      <div>© 2026 Sarthak Hans · <em>The Hans Paradigm™</em> is a service mark.</div>
+      <div>Code: MIT. Design language and methodology naming: all rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

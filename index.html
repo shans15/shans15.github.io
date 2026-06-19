@@ -74,8 +74,8 @@
       <a href="#work">work</a>
       <a href="#research">research</a>
       <a href="#method">method</a>
+      <a href="/about/">about</a>
       <a href="#contact">contact</a>
-      <a href="cv.pdf" class="nav-cv">cv.pdf ↗</a>
     </div>
     <button
       class="nav-toggle"
@@ -102,8 +102,8 @@
     <li><a href="#work"     onclick="HansParadigm.closeDrawer()"><span class="ndl-num">01</span><span>work</span></a></li>
     <li><a href="#research" onclick="HansParadigm.closeDrawer()"><span class="ndl-num">02</span><span>research</span></a></li>
     <li><a href="#method"   onclick="HansParadigm.closeDrawer()"><span class="ndl-num">03</span><span>method</span></a></li>
-    <li><a href="#contact"  onclick="HansParadigm.closeDrawer()"><span class="ndl-num">04</span><span>contact</span></a></li>
-    <li><a href="cv.pdf"    onclick="HansParadigm.closeDrawer()"><span class="ndl-num">05</span><span>cv.pdf ↗</span></a></li>
+    <li><a href="/about/"   onclick="HansParadigm.closeDrawer()"><span class="ndl-num">04</span><span>about</span></a></li>
+    <li><a href="#contact"  onclick="HansParadigm.closeDrawer()"><span class="ndl-num">05</span><span>contact</span></a></li>
   </ul>
   <div class="nav-drawer-foot">
     <div>operator <em>shans15</em></div>
@@ -128,7 +128,7 @@
         <div class="hero-credentials">
           <span class="cred">MS CS · FAU</span>
           <span class="cred cred-award">★ 1st place · FAU All of Us '26</span>
-          <span class="cred">ex-Orangetheory Fitness</span>
+          <span class="cred">Orangetheory Fitness</span>
         </div>
       </div>
 
@@ -190,8 +190,7 @@
             <p class="explain-text">A textbook <em>Signal → Rank → Explain</em> system, applied to clinical decision-support. Two XGBoost models trained on ~740K medication eras from the NIH All of Us Researcher Workbench surface per-patient discontinuation risk (AUC <em>0.8713</em>, PR-AUC <em>4.3× baseline</em>) and 180-day behavioral-health crisis risk (AUC <em>0.745</em>, PR-AUC <em>3.7× baseline</em>). The React dashboard renders SHAP explanations and equity breakdowns inline so clinicians can <em>act, not just look</em>.</p>
             <div class="explain-links">
               <a href="https://github.com/shans15/medgap">repo →</a>
-              <a href="#">case study →</a>
-              <a href="#">slides →</a>
+              <a href="/work/medgap/">case study →</a>
             </div>
           </div>
           <div>
@@ -229,7 +228,7 @@
             <p class="explain-text">The clearest statement of the methodology, in my own words from the repo: <em>"Most option scanners are noisy because they evaluate every contract on every ticker, then try to sort the firehose. This one inverts the problem."</em> A ticker only enters the scan if a Saty-style technical setup fires on its daily chart (Signal). Surviving tickers get stress-tested P(profit), EV, and composite scoring across their option chains (Rank). Output is a labeled list (<code>TRADE / WATCHLIST / NO_TRADE</code>) backed by the setup that put it there (Explain).</p>
             <div class="explain-links">
               <a href="https://github.com/shans15/options-scanner">repo →</a>
-              <a href="#">methodology →</a>
+              <a href="/work/options-scanner/">case study →</a>
             </div>
           </div>
           <div>
@@ -254,7 +253,7 @@
           <div class="rr-tags"><span>agents</span><span class="dot">·</span><span>claude</span><span class="dot">·</span><span>chromadb</span><span class="dot">·</span><span>rag</span></div>
         </div>
         <div class="rr-badges">
-          <span class="badge badge-prod">OTF-derived</span>
+          <span class="badge badge-prod">OTF · prod</span>
           <span class="badge">&lt; 10s e2e</span>
           <span class="badge">vector KB</span>
         </div>
@@ -263,9 +262,10 @@
         <div class="explain-grid">
           <div>
             <div class="explain-label">// why ranked #3</div>
-            <p class="explain-text">Open-source rebuild of a production system shipped at Orangetheory Fitness. Raw PagerDuty alert (Signal) → similarity search against a local ChromaDB of past incidents (Rank) → drafted RCA with cited precedents, formatted for paste into Jira or Slack (Explain). The OTF lineage matters: this is a vendor-neutral version of something that ran in production for an enterprise on-call team, not a side project.</p>
+            <p class="explain-text">Open-source incident-triage agent informed by the production work I do at Orangetheory Fitness. Raw PagerDuty alert (Signal) → similarity search against a local ChromaDB of past incidents (Rank) → drafted RCA with cited precedents, formatted for paste into Jira or Slack (Explain). The OTF lineage matters: this is built from systems I'm actively shipping for an enterprise on-call team, not a side project.</p>
             <div class="explain-links">
               <a href="https://github.com/shans15/incident-intelligence-agent">repo →</a>
+              <a href="/work/incident-agent/">case study →</a>
             </div>
           </div>
           <div>
@@ -275,7 +275,7 @@
               <div class="feat"><dt>retrieval</dt><dd>ChromaDB, local-first</dd></div>
               <div class="feat"><dt>generation</dt><dd>Claude API + retry/backoff</dd></div>
               <div class="feat"><dt>output</dt><dd>markdown RCA, paste-ready</dd></div>
-              <div class="feat"><dt>lineage</dt><dd>Orangetheory Fitness prod</dd></div>
+              <div class="feat"><dt>lineage</dt><dd>built at Orangetheory Fitness</dd></div>
             </dl>
           </div>
         </div>
@@ -476,9 +476,9 @@
       <h2 class="contact-h2">Open to engagements.</h2>
       <p class="contact-lead">Currently taking selective AI/ML engineering &amp; solutions-consulting work. Also happy to discuss research collaborations and full-time roles.</p>
       <div class="contact-grid">
-        <a class="contact-link" href="mailto:sarthakhans15@gmail.com">
+        <a class="contact-link" href="mailto:sarthakhans@hotmail.com">
           <span class="cl-label">email</span>
-          <span class="cl-val">sarthakhans15@gmail.com →</span>
+          <span class="cl-val">sarthakhans@hotmail.com →</span>
         </a>
         <a class="contact-link" href="https://github.com/shans15">
           <span class="cl-label">github</span>

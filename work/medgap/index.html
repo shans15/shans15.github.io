@@ -1,0 +1,212 @@
+<!--
+  ============================================================================
+  Case study · MedGap — Psychiatric Medication Gap Monitor
+  © 2026 Sarthak Hans. The Hans Paradigm™.
+  ============================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>MedGap — case study · Sarthak Hans</title>
+  <meta name="description" content="Two XGBoost models on 740K All of Us records predict psychiatric medication discontinuation (AUC 0.87) and crisis risk (AUC 0.75). SHAP explanations, equity breakdowns, clinician-facing React dashboard. 1st place FAU All of Us Hackathon 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="status-bar" role="status" aria-label="System status">
+  <div class="status-inner">
+    <div class="status-left">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="status-token">PAGE</span>
+      <span class="status-value">/work/medgap</span>
+      <span class="status-sep">|</span>
+      <span class="status-token">CASE_STUDY</span>
+      <span class="status-value">01 of 06</span>
+    </div>
+    <div class="status-right">
+      <span class="status-token">UTC</span>
+      <span class="status-value" id="clock">--:--:--</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <span class="brand-name">Sarthak Hans</span>
+      <span class="brand-glyph">→</span>
+    </a>
+    <div class="nav-links nav-links-desktop">
+      <a href="/#work">work</a>
+      <a href="/#research">research</a>
+      <a href="/#method">method</a>
+      <a href="/about/">about</a>
+      <a href="/#contact">contact</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="nav-drawer" aria-expanded="false" onclick="HansParadigm.toggleDrawer()">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-label">menu</span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-backdrop" id="nav-backdrop" onclick="HansParadigm.closeDrawer()" aria-hidden="true"></div>
+<aside class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="nav-drawer-head">
+    <div class="nav-drawer-label">// menu</div>
+    <button class="nav-drawer-close" aria-label="Close menu" onclick="HansParadigm.closeDrawer()">close ✕</button>
+  </div>
+  <ul class="nav-drawer-list">
+    <li><a href="/#work"     onclick="HansParadigm.closeDrawer()"><span class="ndl-num">01</span><span>work</span></a></li>
+    <li><a href="/#research" onclick="HansParadigm.closeDrawer()"><span class="ndl-num">02</span><span>research</span></a></li>
+    <li><a href="/#method"   onclick="HansParadigm.closeDrawer()"><span class="ndl-num">03</span><span>method</span></a></li>
+    <li><a href="/about/"    onclick="HansParadigm.closeDrawer()"><span class="ndl-num">04</span><span>about</span></a></li>
+    <li><a href="/#contact"  onclick="HansParadigm.closeDrawer()"><span class="ndl-num">05</span><span>contact</span></a></li>
+  </ul>
+  <div class="nav-drawer-foot">
+    <div>operator <em>shans15</em></div>
+    <div>paradigm <em>hans.v1.0</em></div>
+  </div>
+</aside>
+
+<main class="article">
+  <div class="breadcrumb">
+    <a href="/">home</a>
+    <span class="crumb-sep">/</span>
+    <a href="/#work">work</a>
+    <span class="crumb-sep">/</span>
+    <span>medgap</span>
+  </div>
+
+  <header class="article-head">
+    <div class="article-eyebrow">case study · healthcare · ml</div>
+    <h1 class="article-h1">MedGap — predicting psychiatric medication gaps before they become crises.</h1>
+    <p class="article-sub">A clinical decision-support tool for prescribers to identify, triage, and act on psychiatric medication discontinuation across a patient panel. Two XGBoost models on ~740,000 All of Us records, SHAP-based clinician explanations, equity breakdowns, and auto-drafted patient outreach.</p>
+    <div class="article-meta">
+      <span class="am-item award">★ 1st place · FAU All of Us Hackathon 2026</span>
+      <span class="am-item"><span class="am-k">data</span><span>NIH All of Us</span></span>
+      <span class="am-item"><span class="am-k">stack</span><span>XGBoost · React · SHAP</span></span>
+      <span class="am-item"><span class="am-k">repo</span><span><a href="https://github.com/shans15/medgap">github.com/shans15/medgap</a></span></span>
+    </div>
+  </header>
+
+  <section class="article-section">
+    <h2>Problem</h2>
+    <p>Psychiatric medications are among the highest-stakes prescriptions in primary care and psychiatry. Discontinuation rates are notoriously high — in many cohorts more than half of patients stop refilling within a year — and unplanned discontinuation is a leading proximal cause of behavioral-health crisis events.</p>
+    <p>Prescribers operate without panel-level visibility. The signals exist in EHR data (refill cadence, prior crisis events, social-determinant flags, prescription history) but no one is paid to assemble them into a per-patient risk view at the moment a clinician needs to make an outreach decision. The patients most likely to fall off the regimen are exactly the ones whose follow-up appointments are easiest to miss.</p>
+    <div class="callout">
+      <p><b>The question MedGap answers:</b> for each patient on this panel, what is the probability they will stop refilling in the next 45 days, and the probability they will have a behavioral-health crisis in the next 180 days — and what should the prescriber do about it?</p>
+    </div>
+  </section>
+
+  <section class="article-section">
+    <h2>Constraints</h2>
+    <ul>
+      <li><b>Data lives in the NIH All of Us Researcher Workbench.</b> ~740,000 medication eras across many patients. The Workbench has aggressive egress controls — no patient-level data leaves the environment. The dashboard reads model outputs through a sanctioned channel, not the raw cohort.</li>
+      <li><b>Hackathon timebox.</b> 48-hour window. No room for unbounded feature engineering or 12-model architecture searches. The work had to commit to a model family early and spend the remaining time on labels, calibration, and the clinician-facing layer.</li>
+      <li><b>Clinical trust is the bottleneck, not accuracy.</b> A 0.92 AUC model nobody acts on is worth less than a 0.85 model with an explanation panel a prescriber understands inside thirty seconds.</li>
+      <li><b>Equity is a first-class result, not an afterthought.</b> The All of Us cohort is intentionally diverse; the model has to perform across demographic groups, and the dashboard has to surface where it doesn't.</li>
+    </ul>
+  </section>
+
+  <section class="article-section">
+    <h2>Approach</h2>
+    <p>The whole system is a textbook <em>Signal → Rank → Explain</em> pipeline applied to a clinical panel.</p>
+
+    <h3>01 / Signal — what survives the upstream filter</h3>
+    <p>The cohort isn't the full Workbench population. It's narrowed to patients with at least one psychiatric medication era within the window and the minimum encounter history to make a 180-day-ahead prediction credible. The signal stage is intentionally cheap: deterministic filters, no model calls, no embedding lookups. The expensive work waits.</p>
+
+    <h3>02 / Rank — two XGBoost models, one per question</h3>
+    <p>Two models, not one. Splitting them lets each optimize for the right horizon and label.</p>
+    <ul>
+      <li><b>Model 2 — Discontinuation Risk.</b> 45-day window. Label derived from refill cadence. Higher recall on near-term drop-off is the goal — this is the model that drives outreach.</li>
+      <li><b>Model 1 — Crisis Risk.</b> 180-day window. Label derived from downstream crisis-event codes. Lower recall is acceptable; the model is a triage filter on top of clinical judgment, not a replacement for it.</li>
+    </ul>
+    <p>Both models are XGBoost. The choice is deliberate: in tabular EHR-style data with mixed categorical/continuous features and high feature interaction, gradient-boosted trees consistently beat or tie deep architectures while training in minutes on the Workbench compute budget. Equally important, the family supports SHAP attributions out of the box — which the next stage depends on.</p>
+
+    <h3>03 / Explain — what the prescriber actually sees</h3>
+    <p>The dashboard renders three things per patient: a thresholded risk band (High / Medium / Low), a SHAP waterfall showing which features pushed the prediction (current refill gap, recent crisis flag, panel-stability score, etc.), and a drafted outreach message the prescriber can edit and send.</p>
+    <p>Equity is rendered at the panel level, not buried in an appendix. The dashboard surfaces AUC and predicted-positive rates broken down by self-reported race, ethnicity, and sex, with a visible warning when subgroup performance falls below a configurable threshold. A clinician should never be told "the model says X" without also being told "the model is less reliable on patients like this."</p>
+  </section>
+
+  <section class="article-section">
+    <h2>Results</h2>
+    <table class="results-table">
+      <thead>
+        <tr><th>Metric</th><th>Model 2 · discontinuation</th><th>Model 1 · crisis</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Question</td><td>Will the patient stop refilling?</td><td>Will the patient have a BH crisis?</td></tr>
+        <tr><td>Window</td><td class="num">45 days</td><td class="num">180 days</td></tr>
+        <tr><td>AUC-ROC</td><td class="num signal">0.8713</td><td class="num signal">0.745</td></tr>
+        <tr><td>PR-AUC</td><td class="num">0.47 (4.3× baseline)</td><td class="num">0.123 (3.7× baseline)</td></tr>
+        <tr><td>Algorithm</td><td>XGBoost</td><td>XGBoost</td></tr>
+        <tr><td>Risk thresholds</td><td>High &gt; 0.65 · Med 0.35–0.65 · Low &lt; 0.35</td><td>High &gt; 0.65 · Med 0.35–0.65 · Low &lt; 0.35</td></tr>
+      </tbody>
+    </table>
+    <p>The PR-AUC lifts are the more interesting numbers. In a high-class-imbalance regime — most patients don't discontinue in any given 45-day window — AUC-ROC overstates performance. PR-AUC is honest. <em>4.3× baseline</em> on discontinuation and <em>3.7× baseline</em> on crisis are the lifts that justify acting on the model output rather than blanket outreach.</p>
+
+    <div class="figure">
+      <div><b>Outcome:</b> Won first place at the FAU All of Us Hackathon 2026 out of ~30 entering teams. Judging weighted clinical applicability, equity treatment, and demonstration quality alongside raw model performance.</div>
+      <div class="figure-cap">FAU All of Us Hackathon · 2026 · 1st place</div>
+    </div>
+  </section>
+
+  <section class="article-section">
+    <h2>What I'd change</h2>
+    <p>This is the section I most want a hiring manager or research collaborator to read. Hackathon timeboxes leave honest gaps. The model is good. The pipeline around it has obvious next iterations.</p>
+    <ul>
+      <li><b>Calibration before thresholds.</b> The risk bands (High / Med / Low) currently use raw probability cutoffs at 0.35 and 0.65. Those thresholds should be set on a calibrated probability — Platt-scaled or isotonic-regressed against held-out positives — not raw XGBoost output. Without calibration the bands aren't directly comparable across cohorts.</li>
+      <li><b>Drift monitoring on the equity panel, not just on overall AUC.</b> The dashboard currently shows subgroup AUC as a static one-time evaluation. A production version would re-evaluate on rolling cohorts and alert when subgroup performance degrades, even if global AUC stays flat. Where the model fails first is rarely on the average patient.</li>
+      <li><b>Outreach-as-a-treatment, evaluated.</b> Right now the dashboard drafts an outreach message; clinicians act on it; nothing closes the loop. The right v2 is a quasi-experimental analysis that estimates whether MedGap-prompted outreach actually changes refill behavior. Lift on the model is necessary but not sufficient — lift on the outcome is the real product question.</li>
+      <li><b>The 180-day crisis window is too long to act on at panel scale.</b> A clinician can act on a 45-day discontinuation prediction (call the patient, schedule a follow-up). A 180-day crisis prediction is mostly a research output. v2 should add a near-term (30-day) crisis-precursor model that gives the clinician something to do this week.</li>
+    </ul>
+  </section>
+
+  <section class="article-section">
+    <h2>Stack</h2>
+    <div class="stack-list">
+      <span>XGBoost</span><span>Python</span><span>scikit-learn</span><span>SHAP</span>
+      <span>React</span><span>TypeScript</span><span>FastAPI</span>
+      <span>NIH All of Us Researcher Workbench</span>
+    </div>
+  </section>
+
+  <section class="article-section">
+    <h2>References</h2>
+    <ul>
+      <li>Repo · <a href="https://github.com/shans15/medgap">github.com/shans15/medgap</a></li>
+      <li>Methodology context · <a href="/#method">Signal → Rank → Explain</a></li>
+      <li>NIH All of Us Researcher Workbench · <a href="https://www.researchallofus.org/">researchallofus.org</a></li>
+    </ul>
+  </section>
+
+  <div class="article-foot">
+    <a href="/">← back to home</a>
+    <a href="/about/">about sarthak →</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-block"><span class="footer-token">$</span><span class="footer-val">git log --oneline -1</span></div>
+    <div class="footer-block"><span class="footer-token">↳</span><span class="footer-val">hans/v1.0 · 2026-06-19 · medgap case study</span></div>
+    <div class="footer-rule"></div>
+    <div class="footer-meta">
+      <div>© 2026 Sarthak Hans · <em>The Hans Paradigm™</em> is a service mark.</div>
+      <div>Code: MIT. Design language and methodology naming: all rights reserved.</div>
+      <div>Built without templates. Single static artifact, no build step, no tracking.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>
