@@ -606,6 +606,12 @@ dl { padding: 0; }
   transition: opacity 0.15s;
 }
 .explain-links a:hover { opacity: 0.7; }
+.explain-note {
+  font-family: var(--mono);
+  font-size: var(--t-sm);
+  color: var(--dim);
+  font-style: italic;
+}
 
 .feat-list {
   font-family: var(--mono);

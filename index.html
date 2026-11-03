@@ -55,7 +55,7 @@
       <span class="status-value" id="clock">--:--:--</span>
       <span class="status-sep">|</span>
       <span class="status-token">LAST_INDEX</span>
-      <span class="status-value">2026-06-19</span>
+      <span class="status-value">2026-11-03</span>
     </div>
   </div>
 </div>
@@ -146,11 +146,12 @@
 
     <div class="filter-bar" role="toolbar" aria-label="Filter projects">
       <span class="filter-label">filter:</span>
-      <button class="filter-btn active" data-filter="all">all <span class="filter-count">[6]</span></button>
-      <button class="filter-btn" data-filter="ml">ml <span class="filter-count">[3]</span></button>
-      <button class="filter-btn" data-filter="quant">quant <span class="filter-count">[1]</span></button>
-      <button class="filter-btn" data-filter="agents">agents <span class="filter-count">[1]</span></button>
+      <button class="filter-btn active" data-filter="all">all <span class="filter-count">[10]</span></button>
+      <button class="filter-btn" data-filter="ml">ml <span class="filter-count">[5]</span></button>
+      <button class="filter-btn" data-filter="quant">quant <span class="filter-count">[2]</span></button>
+      <button class="filter-btn" data-filter="agents">agents <span class="filter-count">[2]</span></button>
       <button class="filter-btn" data-filter="data">data-eng <span class="filter-count">[1]</span></button>
+      <button class="filter-btn" data-filter="saas">saas <span class="filter-count">[1]</span></button>
       <button class="filter-btn" data-filter="research">research <span class="filter-count">[1]</span></button>
       <span class="filter-spacer"></span>
       <span class="filter-sort">sort: <span class="filter-sort-val">rank ↓</span></span>
@@ -208,24 +209,24 @@
       </div>
     </article>
 
-    <article class="rank-row" data-cats="quant">
+    <article class="rank-row" data-cats="quant ml">
       <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
         <div class="rr-num">02</div>
         <div class="rr-name">
-          <h3>Options Scanner <span class="rr-sub">directional setups → ranked contracts</span></h3>
-          <div class="rr-tags"><span>quant</span><span class="dot">·</span><span>python</span><span class="dot">·</span><span>garch</span><span class="dot">·</span><span>monte-carlo</span></div>
+          <h3>Options Scanner <span class="rr-sub">directional setups → ranked contracts + A+ grader</span></h3>
+          <div class="rr-tags"><span>quant</span><span class="dot">·</span><span>python</span><span class="dot">·</span><span>garch</span><span class="dot">·</span><span>monte-carlo</span><span class="dot">·</span><span>ml</span></div>
         </div>
         <div class="rr-badges">
           <span class="badge">500 tickers</span>
-          <span class="badge">EV-aware</span>
-          <span class="badge">EOD</span>
+          <span class="badge">A+ grader</span>
+          <span class="badge">0DTE + swing</span>
         </div>
       </div>
       <div class="rr-explain">
         <div class="explain-grid">
           <div>
             <div class="explain-label">// why ranked #2</div>
-            <p class="explain-text">The clearest statement of the methodology, in my own words from the repo: <em>"Most option scanners are noisy because they evaluate every contract on every ticker, then try to sort the firehose. This one inverts the problem."</em> A ticker only enters the scan if a Saty-style technical setup fires on its daily chart (Signal). Surviving tickers get stress-tested P(profit), EV, and composite scoring across their option chains (Rank). Output is a labeled list (<code>TRADE / WATCHLIST / NO_TRADE</code>) backed by the setup that put it there (Explain).</p>
+            <p class="explain-text">The clearest statement of the methodology: <em>"Most option scanners are noisy because they evaluate every contract on every ticker, then try to sort the firehose. This one inverts the problem."</em> A Saty-style technical setup must fire first (Signal). Surviving tickers get GARCH-conditioned Monte Carlo P(profit), EV, and composite scoring (Rank). Output is a labeled list (<code>TRADE / WATCHLIST / NO_TRADE</code>) backed by the setup that put it there (Explain). Now extended: an <strong>A+ Confluence Scorer</strong> re-grades survivors across 5 weighted categories (Technical, Vol/VIX, Catalyst, Macro/Breadth, Liquidity) with position-sizing discipline. Also includes intraday mean-reversion, 0DTE entry/exit gates, market regime, sector rotation, and a trade-scoring model.</p>
             <div class="explain-links">
               <a href="https://github.com/shans15/options-scanner">repo →</a>
               <a href="/work/options-scanner/">case study →</a>
@@ -237,8 +238,9 @@
               <div class="feat"><dt>universe</dt><dd>S&amp;P 500, cached daily</dd></div>
               <div class="feat"><dt>setup detectors</dt><dd>compression · pullback · stage-2 · failed-breakdown</dd></div>
               <div class="feat"><dt>pricing</dt><dd>GARCH-conditioned · Monte Carlo</dd></div>
-              <div class="feat"><dt>scoring</dt><dd>P(profit) · expected value · stress</dd></div>
-              <div class="feat"><dt>output</dt><dd>3-class labeled candidate list</dd></div>
+              <div class="feat"><dt>A+ grader</dt><dd>5-category confluence · position sizing</dd></div>
+              <div class="feat"><dt>modes</dt><dd>EOD swing · intraday MR · 0DTE · market regime</dd></div>
+              <div class="feat"><dt>output</dt><dd>3-class labeled list + A+/A/B+/F grades</dd></div>
             </dl>
           </div>
         </div>
@@ -387,9 +389,156 @@
       </div>
     </article>
 
+    <article class="rank-row" data-cats="agents ml">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">07</div>
+        <div class="rr-name">
+          <h3>Jarvis <span class="rr-sub">voice shell over Claude Code + Obsidian</span></h3>
+          <div class="rr-tags"><span>agents</span><span class="dot">·</span><span>python</span><span class="dot">·</span><span>whisper.cpp</span><span class="dot">·</span><span>kokoro</span><span class="dot">·</span><span>claude-code</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge badge-prod">live · local</span>
+          <span class="badge">30 tests</span>
+          <span class="badge">push-to-talk</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #7</div>
+            <p class="explain-text">Local voice AI orchestrator running on-device. Mic audio transcribed by whisper.cpp (Metal-accelerated) is the Signal. A router classifies intent into Dictation mode (insert at cursor) or Agent mode (hand off to Claude Code headless backend) — that classification is the Rank. Kokoro TTS reads the result back, complete with a spoken confirm-gate for destructive actions (Explain). Obsidian MCP gives the agent read/write access to the vault. Phase 1 + P1.x shipped: async slow-path, barge-in detection around agent replies, full agency tools (Read/Glob/Grep/Write/Edit/Bash + Obsidian). All live-verified on machine.</p>
+            <div class="explain-links">
+              <span class="explain-note">local-first · not yet public</span>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>stt</dt><dd>whisper.cpp · Metal · swappable adapter</dd></div>
+              <div class="feat"><dt>tts</dt><dd>Kokoro on-device · ElevenLabs swap</dd></div>
+              <div class="feat"><dt>backend</dt><dd>Claude Code headless · full agency</dd></div>
+              <div class="feat"><dt>memory</dt><dd>Obsidian MCP (filesystem vault)</dd></div>
+              <div class="feat"><dt>modes</dt><dd>dictation · agent · async slow-path</dd></div>
+              <div class="feat"><dt>safety</dt><dd>spoken confirm-gate for destructive ops</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rank-row" data-cats="saas">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">08</div>
+        <div class="rr-name">
+          <h3>FreightIntel <span class="rr-sub">white-label rate-quoting SaaS for GCC freight forwarders</span></h3>
+          <div class="rr-tags"><span>saas</span><span class="dot">·</span><span>typescript</span><span class="dot">·</span><span>nextjs</span><span class="dot">·</span><span>postgres-rls</span><span class="dot">·</span><span>terraform</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge">M1–M8 done</span>
+          <span class="badge">17/17 tests</span>
+          <span class="badge">RLS-isolated</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #8</div>
+            <p class="explain-text">Greenfield enterprise SaaS monorepo: a conversational widget collects shipment details (Signal), the API scores and tiers quote options — spot-rate openly, contract-rate gated behind account creation (Rank), and the response hands the freight forwarder a decision-ready quote with a clear next action (Explain). Multi-tenant Postgres with full row-level security (<code>set_config</code> per transaction + <code>NULLIF</code> guard for connection-pooling edge cases under PgBouncer). Stack: pnpm monorepo — <code>shared</code> (Zod+types), <code>api</code> (Express→Lambda, Prisma), <code>widget</code> (React+Vite iframe embed), <code>web</code> (Next.js 14 admin on Vercel), Terraform infra. M1–M8 complete and end-to-end verified with Docker stack.</p>
+            <div class="explain-links">
+              <a href="https://github.com/shans15/freightintel">repo →</a>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>stack</dt><dd>pnpm monorepo · Express/Lambda · Next.js 14</dd></div>
+              <div class="feat"><dt>security</dt><dd>Postgres RLS · per-tenant GUC · PgBouncer safe</dd></div>
+              <div class="feat"><dt>embed</dt><dd>React+Vite conversational quote widget</dd></div>
+              <div class="feat"><dt>infra</dt><dd>Terraform · RDS Proxy · SQS async worker</dd></div>
+              <div class="feat"><dt>tests</dt><dd>17/17 incl. RLS isolation + route integration</dd></div>
+              <div class="feat"><dt>deploy target</dt><dd>AWS Lambda + Vercel (admin)</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rank-row" data-cats="quant ml">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">09</div>
+        <div class="rr-name">
+          <h3>Earnings Reaction Model <span class="rr-sub">post-earnings stock move vs. implied move</span></h3>
+          <div class="rr-tags"><span>quant</span><span class="dot">·</span><span>python</span><span class="dot">·</span><span>gbm</span><span class="dot">·</span><span>walk-forward</span><span class="dot">·</span><span>ml</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge">~20K events</span>
+          <span class="badge">honesty gate</span>
+          <span class="badge">3-head model</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #9</div>
+            <p class="explain-text">Cross-ticker ML model predicting post-earnings stock reaction — gap magnitude, direction, and post-announcement drift — benchmarked against the live implied move. Per-ticker history (~15–80 quarters) is too small for ML, so ~500 S&amp;P names are pooled into ~20–40K events: a data-density decision that is itself the Signal-stage design. Three gradient-boosted model heads (quantile regression for magnitude, classifier for direction, regression for drift) are the Rank. Output is a <code>rich / cheap / neutral</code> edge classification relative to the live straddle (Explain). An <em>honesty gate</em> forces the model to report "no exploitable edge found" if it cannot beat the naïve baseline out-of-sample.</p>
+            <div class="explain-links">
+              <a href="https://github.com/shans15/options-scanner">repo →</a>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>data</dt><dd>FMP API · ~500 S&amp;P names · pooled ~20–40K events</dd></div>
+              <div class="feat"><dt>model heads</dt><dd>magnitude (quantile) · direction · drift</dd></div>
+              <div class="feat"><dt>validation</dt><dd>calendar-ordered walk-forward CV</dd></div>
+              <div class="feat"><dt>live signal</dt><dd>Schwab straddle implied move</dd></div>
+              <div class="feat"><dt>edge gate</dt><dd>must beat naïve baseline OOS or report null</dd></div>
+              <div class="feat"><dt>output</dt><dd>rich / cheap / neutral vs. implied</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rank-row" data-cats="ml">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">10</div>
+        <div class="rr-name">
+          <h3>Poker GTO Tester <span class="rr-sub">heads-up NLHE strategy tester + GTO bot</span></h3>
+          <div class="rr-tags"><span>ml</span><span class="dot">·</span><span>python</span><span class="dot">·</span><span>game-theory</span><span class="dot">·</span><span>cfr</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge">29 tests</span>
+          <span class="badge">heads-up NLHE</span>
+          <span class="badge">EV-aware</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #10</div>
+            <p class="explain-text">Python CLI for heads-up no-limit hold'em strategy analysis and testing. Hand state and bet history are the Signal. A game-tree engine evaluates available actions and scores them by expected value and GTO deviation — that's the Rank. Output is an explained action recommendation backed by equity estimates and EV calculations (Explain). Core simulation + evaluator + equity engine complete with 29 passing tests. The stretch goal is a Counterfactual Regret Minimization bot — an opponent that converges to a Nash-equilibrium strategy via self-play and is, in theory, unexploitable.</p>
+            <div class="explain-links">
+              <span class="explain-note">local-first · not yet public</span>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>format</dt><dd>heads-up NLHE · Python CLI</dd></div>
+              <div class="feat"><dt>engine</dt><dd>hand evaluator · equity sim · EV scorer</dd></div>
+              <div class="feat"><dt>strategy</dt><dd>GTO deviation scoring</dd></div>
+              <div class="feat"><dt>tests</dt><dd>29 passing (cards, equity, EV, CLI)</dd></div>
+              <div class="feat"><dt>stretch</dt><dd>CFR self-play bot (Nash convergence)</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
     <div class="rank-foot">
       <span class="rank-foot-token">// </span>
-      <span id="rank-count">6 of 6 projects</span>
+      <span id="rank-count">10 of 10 projects</span>
       <span class="rank-foot-token"> · filtered by </span>
       <span id="rank-filter">all</span>
       <span class="rank-foot-token"> · sorted by </span>
@@ -505,7 +654,7 @@
     </div>
     <div class="footer-block">
       <span class="footer-token">↳</span>
-      <span class="footer-val" id="footer-commit">hans/v1.0 · 2026-06-19 · initial public scan</span>
+      <span class="footer-val" id="footer-commit">hans/v1.1 · 2026-11-03 · +4 projects · jarvis · freightintel · earnings-rx · poker-gto</span>
     </div>
     <div class="footer-rule"></div>
     <div class="footer-meta">
