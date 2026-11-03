@@ -146,13 +146,13 @@
 
     <div class="filter-bar" role="toolbar" aria-label="Filter projects">
       <span class="filter-label">filter:</span>
-      <button class="filter-btn active" data-filter="all">all <span class="filter-count">[10]</span></button>
-      <button class="filter-btn" data-filter="ml">ml <span class="filter-count">[5]</span></button>
+      <button class="filter-btn active" data-filter="all">all <span class="filter-count">[11]</span></button>
+      <button class="filter-btn" data-filter="ml">ml <span class="filter-count">[6]</span></button>
       <button class="filter-btn" data-filter="quant">quant <span class="filter-count">[2]</span></button>
       <button class="filter-btn" data-filter="agents">agents <span class="filter-count">[2]</span></button>
       <button class="filter-btn" data-filter="data">data-eng <span class="filter-count">[1]</span></button>
       <button class="filter-btn" data-filter="saas">saas <span class="filter-count">[1]</span></button>
-      <button class="filter-btn" data-filter="research">research <span class="filter-count">[1]</span></button>
+      <button class="filter-btn" data-filter="research">research <span class="filter-count">[2]</span></button>
       <span class="filter-spacer"></span>
       <span class="filter-sort">sort: <span class="filter-sort-val">rank ↓</span></span>
     </div>
@@ -536,9 +536,46 @@
       </div>
     </article>
 
+    <article class="rank-row" data-cats="research ml">
+      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
+        <div class="rr-num">11</div>
+        <div class="rr-name">
+          <h3>DIS Bioacoustics <span class="rr-sub">disentangled SSL for marine novelty detection</span></h3>
+          <div class="rr-tags"><span>research</span><span class="dot">·</span><span>ssl</span><span class="dot">·</span><span>resnet</span><span class="dot">·</span><span>contrastive</span><span class="dot">·</span><span>ml</span></div>
+        </div>
+        <div class="rr-badges">
+          <span class="badge">225K annotations</span>
+          <span class="badge">FAU DIS</span>
+          <span class="badge">vision + audio</span>
+        </div>
+      </div>
+      <div class="rr-explain">
+        <div class="explain-grid">
+          <div>
+            <div class="explain-label">// why ranked #11</div>
+            <p class="explain-text">Research question: does a self-supervised encoder trained to separate <em>what made a sound</em> (biology) from <em>how it was recorded</em> (site, hydrophone, gain) detect <strong>unknown</strong> marine sounds better than Google's Perch 2.0 and a plain SimCLR encoder? The methodology maps cleanly: raw hydrophone audio windowed into 5-second clips (Signal) → disentangled two-head encoder scoring each window for biological content vs. recording artifact (<code>h_bio</code> / <code>h_site</code>) (Rank) → novelty score + cluster labels surfacing sounds the classifier has never seen (Explain). The <strong>computer vision side</strong>: spectrograms (log-mel, linear, PCEN) are the feature representation — ResNet18 and TinyCNN operate on them as 2D images, making this a CV problem applied to passive acoustic monitoring.</p>
+            <div class="explain-links">
+              <a href="https://github.com/shans15/bioacoustics-research">repo →</a>
+            </div>
+          </div>
+          <div>
+            <div class="explain-label">// rank features</div>
+            <dl class="feat-list">
+              <div class="feat"><dt>dataset</dt><dd>DCLDE 2027 · ~225K orca annotations · 23 sites</dd></div>
+              <div class="feat"><dt>features</dt><dd>log-mel · linear · PCEN spectrograms</dd></div>
+              <div class="feat"><dt>cv models</dt><dd>ResNet18 · TinyCNN on spectrograms</dd></div>
+              <div class="feat"><dt>ssl</dt><dd>SimCLR baseline + DIS two-head (h_bio / h_site)</dd></div>
+              <div class="feat"><dt>baselines</dt><dd>Perch 2.0 · plain SimCLR · supervised</dd></div>
+              <div class="feat"><dt>status</dt><dd>stages 1–2 done · stages 3–7 pending</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </article>
+
     <div class="rank-foot">
       <span class="rank-foot-token">// </span>
-      <span id="rank-count">10 of 10 projects</span>
+      <span id="rank-count">11 of 11 projects</span>
       <span class="rank-foot-token"> · filtered by </span>
       <span id="rank-filter">all</span>
       <span class="rank-foot-token"> · sorted by </span>
@@ -609,9 +646,18 @@
         <div class="pub-links"><a href="#">writeup →</a><a href="https://github.com/shans15/medgap">code →</a></div>
       </article>
 
+      <article class="pub">
+        <div class="pub-type">Active research · 2026</div>
+        <h3 class="pub-title"><a href="https://github.com/shans15/bioacoustics-research">Disentangled Self-Supervised Learning for Marine Novelty Detection: Separating Biology from Recording Site</a></h3>
+        <div class="pub-authors">Sarthak Hans</div>
+        <div class="pub-venue">FAU DIS Lab · independent research · in progress</div>
+        <p class="pub-abstract">Trains a two-head SSL encoder on the DCLDE 2027 killer-whale dataset (~225K bounding-box annotations, 11 providers, 23 locations) to disentangle biological identity (<code>h_bio</code>) from recording-site characteristics (<code>h_site</code>). Benchmarks novelty detection and cross-site generalization against Google Perch 2.0 and a plain SimCLR encoder. Spectrograms (log-mel, linear, PCEN) are processed by ResNet18 and TinyCNN as 2D images. Stages 1–2 (EDA, windowing, augmentations, supervised/pair datasets) complete; stages 3–7 (Perch baseline through full DIS training) in progress on Colab GPU.</p>
+        <div class="pub-links"><a href="https://github.com/shans15/bioacoustics-research">code →</a></div>
+      </article>
+
       <div class="research-interests">
         <span class="ri-label">interests</span>
-        <span>LLM evaluation under domain shift · fairness in applied ML · clinician-facing ML systems · applied research that ships to production.</span>
+        <span>LLM evaluation under domain shift · fairness in applied ML · clinician-facing ML systems · self-supervised learning for bioacoustics · applied research that ships to production.</span>
       </div>
     </div>
   </section>
@@ -654,7 +700,7 @@
     </div>
     <div class="footer-block">
       <span class="footer-token">↳</span>
-      <span class="footer-val" id="footer-commit">hans/v1.1 · 2026-11-03 · +4 projects · jarvis · freightintel · earnings-rx · poker-gto</span>
+      <span class="footer-val" id="footer-commit">hans/v1.2 · 2026-11-03 · +5 projects · jarvis · freightintel · earnings-rx · poker-gto · dis-bioacoustics</span>
     </div>
     <div class="footer-rule"></div>
     <div class="footer-meta">
