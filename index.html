@@ -23,7 +23,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0a0a0a">
   <title>Sarthak Hans · Signal → Rank → Explain · The Hans Paradigm</title>
-  <meta name="description" content="AI/ML engineer and researcher. Builds Signal → Rank → Explain systems in healthcare, fintech, and ops. MS CS @ FAU. 1st place FAU All of Us Hackathon 2026.">
+  <meta name="description" content="AI/ML engineer and researcher. Builds Signal → Rank → Explain systems in healthcare, fintech, and ops. M.S. Artificial Intelligence @ FAU. 1st place FAU All of Us Hackathon 2026.">
   <meta name="author" content="Sarthak Hans">
   <meta property="og:title" content="Sarthak Hans · The Hans Paradigm">
   <meta property="og:description" content="Signal → Rank → Explain. An interface that enacts the methodology.">
@@ -126,7 +126,7 @@
           <span class="hero-role">ai/ml engineer · solutions consultant · researcher</span>
         </h1>
         <div class="hero-credentials">
-          <span class="cred">MS CS · FAU</span>
+          <span class="cred">M.S. AI · FAU</span>
           <span class="cred cred-award">★ 1st place · FAU All of Us '26</span>
           <span class="cred">Orangetheory Fitness</span>
         </div>
@@ -284,47 +284,12 @@
       </div>
     </article>
 
-    <article class="rank-row" data-cats="data ml">
+    <article class="rank-row" data-cats="research ml">
       <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
         <div class="rr-num">04</div>
         <div class="rr-name">
-          <h3>Bike Data Lakehouse <span class="rr-sub">medallion as Signal → Rank → Explain</span></h3>
-          <div class="rr-tags"><span>data-eng</span><span class="dot">·</span><span>databricks</span><span class="dot">·</span><span>delta</span><span class="dot">·</span><span>mlflow</span></div>
-        </div>
-        <div class="rr-badges">
-          <span class="badge">70M rows</span>
-          <span class="badge">Unity Catalog</span>
-          <span class="badge">MLflow registry</span>
-        </div>
-      </div>
-      <div class="rr-explain">
-        <div class="explain-grid">
-          <div>
-            <div class="explain-label">// why ranked #4</div>
-            <p class="explain-text">The methodology applied at the data-engineering layer. <em>Bronze (Signal)</em> ingests raw Citi Bike trips + GBFS + weather with MERGE-based idempotency and bad-row quarantine. <em>Silver (Rank)</em> is the cleaned, partitioned, Z-ordered hourly demand tables. <em>Gold (Explain)</em> is the predicted-demand model output an operations dashboard can actually act on. The Lakehouse architecture is the point, not the dataset.</p>
-            <div class="explain-links">
-              <a href="https://github.com/shans15/bike-data-lakehouse">repo →</a>
-            </div>
-          </div>
-          <div>
-            <div class="explain-label">// rank features</div>
-            <dl class="feat-list">
-              <div class="feat"><dt>volume</dt><dd>~70M trip rows · 3.5 GB</dd></div>
-              <div class="feat"><dt>governance</dt><dd>Unity Catalog, single plane</dd></div>
-              <div class="feat"><dt>experiments</dt><dd>MLflow · baseline + LGBM + GBT</dd></div>
-              <div class="feat"><dt>output</dt><dd>SQL ops dashboard</dd></div>
-            </dl>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="rank-row" data-cats="research ml">
-      <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
-        <div class="rr-num">05</div>
-        <div class="rr-name">
-          <h3>CFPB LLM Fairness <span class="rr-sub">zero-shot vs. few-shot under domain shift</span></h3>
-          <div class="rr-tags"><span>research</span><span class="dot">·</span><span>llm</span><span class="dot">·</span><span>fairness</span></div>
+          <h3>CFPB LLM Domain Shift <span class="rr-sub">zero-shot vs. few-shot under domain shift</span></h3>
+          <div class="rr-tags"><span>research</span><span class="dot">·</span><span>llm</span><span class="dot">·</span><span>evaluation</span></div>
         </div>
         <div class="rr-badges">
           <span class="badge">working paper</span>
@@ -334,8 +299,8 @@
       <div class="rr-explain">
         <div class="explain-grid">
           <div>
-            <div class="explain-label">// why ranked #5</div>
-            <p class="explain-text">The methodology as research. Compares Multinomial Naive Bayes against zero-shot and few-shot LLM classification for financial-distress detection across CFPB credit-card → mortgage complaints (Signal: classifiers · Rank: out-of-domain accuracy · Explain: fairness analysis across demographic groups). 10-year window, 2016–2026. In preparation as a working paper for CAP6635.</p>
+            <div class="explain-label">// why ranked #4</div>
+            <p class="explain-text">The methodology as research. Compares Multinomial Naive Bayes against zero-shot and few-shot LLM classification for financial-distress detection across CFPB credit-card → mortgage complaints (Signal: classifiers · Rank: out-of-domain accuracy · Explain: state-level performance analysis). 10-year window, 2016–2026. In preparation as a working paper for CAP6635.</p>
             <div class="explain-links">
               <a href="https://github.com/shans15/cap6635-research">repo →</a>
               <a href="#research">read alongside research section ↓</a>
@@ -357,7 +322,7 @@
 
     <article class="rank-row" data-cats="agents ml">
       <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
-        <div class="rr-num">06</div>
+        <div class="rr-num">05</div>
         <div class="rr-name">
           <h3>Veil <span class="rr-sub">image-authenticity scoring &amp; scam triage</span></h3>
           <div class="rr-tags"><span>ml</span><span class="dot">·</span><span>vision</span><span class="dot">·</span><span>detector-ensemble</span></div>
@@ -370,7 +335,7 @@
       <div class="rr-explain">
         <div class="explain-grid">
           <div>
-            <div class="explain-label">// why ranked #6</div>
+            <div class="explain-label">// why ranked #5</div>
             <p class="explain-text">Same pattern, image domain. Detector outputs (Signal) → combined Veil authenticity score with confidence rating (Rank) → plain-language verdict (<code>Looks authentic</code> / <code>Needs review</code> / <code>High scam risk</code>) plus visual warning-sign explanations and verification next-steps (Explain). Designed for human review, not as definitive proof.</p>
             <div class="explain-links">
               <a href="https://github.com/shans15/ai-detector">repo →</a>
@@ -391,7 +356,7 @@
 
     <article class="rank-row" data-cats="agents ml">
       <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
-        <div class="rr-num">07</div>
+        <div class="rr-num">06</div>
         <div class="rr-name">
           <h3>Jarvis <span class="rr-sub">voice shell over Claude Code + Obsidian</span></h3>
           <div class="rr-tags"><span>agents</span><span class="dot">·</span><span>python</span><span class="dot">·</span><span>whisper.cpp</span><span class="dot">·</span><span>kokoro</span><span class="dot">·</span><span>claude-code</span></div>
@@ -405,7 +370,7 @@
       <div class="rr-explain">
         <div class="explain-grid">
           <div>
-            <div class="explain-label">// why ranked #7</div>
+            <div class="explain-label">// why ranked #6</div>
             <p class="explain-text">Local voice AI orchestrator running on-device. Mic audio transcribed by whisper.cpp (Metal-accelerated) is the Signal. A router classifies intent into Dictation mode (insert at cursor) or Agent mode (hand off to Claude Code headless backend) — that classification is the Rank. Kokoro TTS reads the result back, complete with a spoken confirm-gate for destructive actions (Explain). Obsidian MCP gives the agent read/write access to the vault. Phase 1 + P1.x shipped: async slow-path, barge-in detection around agent replies, full agency tools (Read/Glob/Grep/Write/Edit/Bash + Obsidian). All live-verified on machine.</p>
             <div class="explain-links">
               <span class="explain-note">local-first · not yet public</span>
@@ -428,7 +393,7 @@
 
     <article class="rank-row" data-cats="saas">
       <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
-        <div class="rr-num">08</div>
+        <div class="rr-num">07</div>
         <div class="rr-name">
           <h3>FreightIntel <span class="rr-sub">white-label rate-quoting SaaS for GCC freight forwarders</span></h3>
           <div class="rr-tags"><span>saas</span><span class="dot">·</span><span>typescript</span><span class="dot">·</span><span>nextjs</span><span class="dot">·</span><span>postgres-rls</span><span class="dot">·</span><span>terraform</span></div>
@@ -442,10 +407,9 @@
       <div class="rr-explain">
         <div class="explain-grid">
           <div>
-            <div class="explain-label">// why ranked #8</div>
+            <div class="explain-label">// why ranked #7</div>
             <p class="explain-text">Greenfield enterprise SaaS monorepo: a conversational widget collects shipment details (Signal), the API scores and tiers quote options — spot-rate openly, contract-rate gated behind account creation (Rank), and the response hands the freight forwarder a decision-ready quote with a clear next action (Explain). Multi-tenant Postgres with full row-level security (<code>set_config</code> per transaction + <code>NULLIF</code> guard for connection-pooling edge cases under PgBouncer). Stack: pnpm monorepo — <code>shared</code> (Zod+types), <code>api</code> (Express→Lambda, Prisma), <code>widget</code> (React+Vite iframe embed), <code>web</code> (Next.js 14 admin on Vercel), Terraform infra. M1–M8 complete and end-to-end verified with Docker stack.</p>
             <div class="explain-links">
-              <a href="https://github.com/shans15/freightintel">repo →</a>
             </div>
           </div>
           <div>
@@ -465,7 +429,7 @@
 
     <article class="rank-row" data-cats="quant ml">
       <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
-        <div class="rr-num">09</div>
+        <div class="rr-num">08</div>
         <div class="rr-name">
           <h3>Earnings Reaction Model <span class="rr-sub">post-earnings stock move vs. implied move</span></h3>
           <div class="rr-tags"><span>quant</span><span class="dot">·</span><span>python</span><span class="dot">·</span><span>gbm</span><span class="dot">·</span><span>walk-forward</span><span class="dot">·</span><span>ml</span></div>
@@ -479,7 +443,7 @@
       <div class="rr-explain">
         <div class="explain-grid">
           <div>
-            <div class="explain-label">// why ranked #9</div>
+            <div class="explain-label">// why ranked #8</div>
             <p class="explain-text">Cross-ticker ML model predicting post-earnings stock reaction — gap magnitude, direction, and post-announcement drift — benchmarked against the live implied move. Per-ticker history (~15–80 quarters) is too small for ML, so ~500 S&amp;P names are pooled into ~20–40K events: a data-density decision that is itself the Signal-stage design. Three gradient-boosted model heads (quantile regression for magnitude, classifier for direction, regression for drift) are the Rank. Output is a <code>rich / cheap / neutral</code> edge classification relative to the live straddle (Explain). An <em>honesty gate</em> forces the model to report "no exploitable edge found" if it cannot beat the naïve baseline out-of-sample.</p>
             <div class="explain-links">
               <a href="https://github.com/shans15/options-scanner">repo →</a>
@@ -502,7 +466,7 @@
 
     <article class="rank-row" data-cats="ml">
       <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
-        <div class="rr-num">10</div>
+        <div class="rr-num">09</div>
         <div class="rr-name">
           <h3>Poker GTO Tester <span class="rr-sub">heads-up NLHE strategy tester + GTO bot</span></h3>
           <div class="rr-tags"><span>ml</span><span class="dot">·</span><span>python</span><span class="dot">·</span><span>game-theory</span><span class="dot">·</span><span>cfr</span></div>
@@ -516,7 +480,7 @@
       <div class="rr-explain">
         <div class="explain-grid">
           <div>
-            <div class="explain-label">// why ranked #10</div>
+            <div class="explain-label">// why ranked #9</div>
             <p class="explain-text">Python CLI for heads-up no-limit hold'em strategy analysis and testing. Hand state and bet history are the Signal. A game-tree engine evaluates available actions and scores them by expected value and GTO deviation — that's the Rank. Output is an explained action recommendation backed by equity estimates and EV calculations (Explain). Core simulation + evaluator + equity engine complete with 29 passing tests. The stretch goal is a Counterfactual Regret Minimization bot — an opponent that converges to a Nash-equilibrium strategy via self-play and is, in theory, unexploitable.</p>
             <div class="explain-links">
               <span class="explain-note">local-first · not yet public</span>
@@ -538,7 +502,7 @@
 
     <article class="rank-row" data-cats="research ml">
       <div class="rr-trigger" onclick="HansParadigm.toggle(this)">
-        <div class="rr-num">11</div>
+        <div class="rr-num">10</div>
         <div class="rr-name">
           <h3>DIS Bioacoustics <span class="rr-sub">disentangled SSL for marine novelty detection</span></h3>
           <div class="rr-tags"><span>research</span><span class="dot">·</span><span>ssl</span><span class="dot">·</span><span>resnet</span><span class="dot">·</span><span>contrastive</span><span class="dot">·</span><span>ml</span></div>
@@ -552,10 +516,9 @@
       <div class="rr-explain">
         <div class="explain-grid">
           <div>
-            <div class="explain-label">// why ranked #11</div>
+            <div class="explain-label">// why ranked #10</div>
             <p class="explain-text">Research question: does a self-supervised encoder trained to separate <em>what made a sound</em> (biology) from <em>how it was recorded</em> (site, hydrophone, gain) detect <strong>unknown</strong> marine sounds better than Google's Perch 2.0 and a plain SimCLR encoder? The methodology maps cleanly: raw hydrophone audio windowed into 5-second clips (Signal) → disentangled two-head encoder scoring each window for biological content vs. recording artifact (<code>h_bio</code> / <code>h_site</code>) (Rank) → novelty score + cluster labels surfacing sounds the classifier has never seen (Explain). The <strong>computer vision side</strong>: spectrograms (log-mel, linear, PCEN) are the feature representation — ResNet18 and TinyCNN operate on them as 2D images, making this a CV problem applied to passive acoustic monitoring.</p>
             <div class="explain-links">
-              <a href="https://github.com/shans15/bioacoustics-research">repo →</a>
             </div>
           </div>
           <div>
@@ -591,7 +554,7 @@
     <div class="method-inner">
       <div class="stage-label stage-label-on-dark"><span class="stage-num">03</span><span class="stage-name">Explain</span></div>
       <h2 class="method-h2">Why the work all looks the same.<br><span class="method-em">Signal → Rank → Explain.</span></h2>
-      <p class="method-lead">The thread across MedGap, the Options Scanner, the Incident Agent, the Lakehouse, the CFPB research, and Veil is a single methodology. Take a noisy input space. Filter to what deserves attention. Score what survives. Surface the reasoning so a human can <em>act</em>, not just look.</p>
+      <p class="method-lead">The thread across MedGap, the Options Scanner, the Incident Agent, the CFPB research, and Veil is a single methodology. Take a noisy input space. Filter to what deserves attention. Score what survives. Surface the reasoning so a human can <em>act</em>, not just look.</p>
 
       <div class="method-stages">
         <article class="method-stage">
@@ -630,10 +593,10 @@
 
       <article class="pub">
         <div class="pub-type">Working paper · 2026</div>
-        <h3 class="pub-title"><a href="#">Few-Shot vs. Zero-Shot LLM Classification for Financial Distress under Cross-Product Domain Shift: A Fairness Analysis Using CFPB Consumer Complaints</a></h3>
+        <h3 class="pub-title"><a href="#">Few-Shot vs. Zero-Shot LLM Classification for Financial Distress under Cross-Product Domain Shift in CFPB Consumer Complaints</a></h3>
         <div class="pub-authors">Sarthak Hans</div>
         <div class="pub-venue">CAP6635, Florida Atlantic University · in preparation</div>
-        <p class="pub-abstract">Compares Multinomial Naive Bayes against zero-shot and few-shot LLM classification for financial-distress detection across CFPB credit-card → mortgage complaints. Adds a fairness analysis across demographic groups to surface where domain shift compounds bias. Default window: 2016-04-30 → 2026-04-30.</p>
+        <p class="pub-abstract">Compares Multinomial Naive Bayes against zero-shot and few-shot LLM classification for financial-distress detection across CFPB credit-card → mortgage complaints. Adds a state-level performance analysis, finding differences of up to 17 macro-F1 points across U.S. states. Default window: 2016-04-30 → 2026-04-30.</p>
         <div class="pub-links"><a href="#">pdf →</a><a href="https://github.com/shans15/cap6635-research">code →</a></div>
       </article>
 
@@ -648,11 +611,11 @@
 
       <article class="pub">
         <div class="pub-type">Active research · 2026</div>
-        <h3 class="pub-title"><a href="https://github.com/shans15/bioacoustics-research">Disentangled Self-Supervised Learning for Marine Novelty Detection: Separating Biology from Recording Site</a></h3>
+        <h3 class="pub-title">Disentangled Self-Supervised Learning for Marine Novelty Detection: Separating Biology from Recording Site</h3>
         <div class="pub-authors">Sarthak Hans</div>
         <div class="pub-venue">FAU DIS Lab · independent research · in progress</div>
         <p class="pub-abstract">Trains a two-head SSL encoder on the DCLDE 2027 killer-whale dataset (~225K bounding-box annotations, 11 providers, 23 locations) to disentangle biological identity (<code>h_bio</code>) from recording-site characteristics (<code>h_site</code>). Benchmarks novelty detection and cross-site generalization against Google Perch 2.0 and a plain SimCLR encoder. Spectrograms (log-mel, linear, PCEN) are processed by ResNet18 and TinyCNN as 2D images. Stages 1–2 (EDA, windowing, augmentations, supervised/pair datasets) complete; stages 3–7 (Perch baseline through full DIS training) in progress on Colab GPU.</p>
-        <div class="pub-links"><a href="https://github.com/shans15/bioacoustics-research">code →</a></div>
+        
       </article>
 
       <div class="research-interests">
@@ -671,9 +634,9 @@
       <h2 class="contact-h2">Open to engagements.</h2>
       <p class="contact-lead">Currently taking selective AI/ML engineering &amp; solutions-consulting work. Also happy to discuss research collaborations and full-time roles.</p>
       <div class="contact-grid">
-        <a class="contact-link" href="mailto:sarthakhans@hotmail.com">
+        <a class="contact-link" href="mailto:sarthakhans01@gmail.com">
           <span class="cl-label">email</span>
-          <span class="cl-val">sarthakhans@hotmail.com →</span>
+          <span class="cl-val">sarthakhans01@gmail.com →</span>
         </a>
         <a class="contact-link" href="https://github.com/shans15">
           <span class="cl-label">github</span>
